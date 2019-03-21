@@ -1,0 +1,55 @@
+# Directories arguments
+data_root: "/media/DATA/HEVI_dataset/ego_motion"
+checkpoint_dir: "/home/brianyao/Documents/stad2019iros-pytorch/checkpoints/ego_pred_checkpoints"
+
+# best_ego_pred_model: "/home/brianyao/Documents/stad2019iros-pytorch/checkpoints/ego_pred_checkpoints/epoch_198_loss_0.035.pt"
+test_dataset: "taiwan_sa"
+test_root: "/media/DATA/VAD_datasets/taiwan_sa/testing"
+
+# dataset arguments
+seed_max: 10
+segment_len: 32 #50
+
+# training parameters
+# nb_fol_epoch: 100
+nb_ego_pred_epoch: 100
+lr: 0.0001
+
+# lambda_fol: 1
+# lambda_ego: 1
+
+# # fol model parameters
+pred_timesteps: 5
+# input_embed_size: 512
+# flow_enc_size: 512
+# box_enc_size: 512
+# with_ego: True
+
+# enc_hidden_size: 512 # no use
+# enc_concat_type: "average"
+# predictor_input_size: 512
+# dec_hidden_size: 512
+# pred_dim: 4
+
+
+# ego_pred model parameters
+ego_embed_size: 128 #64
+ego_enc_size: 128 #64
+ego_dec_size: 128 #64
+ego_pred_input_size: 128 #64
+ego_dim: 3
+
+# dataloader parameters
+batch_size: 32
+shuffle: True
+num_workers: 0
+
+# image parameters
+H: 720
+W: 1280
+channels: 3
+
+flow_roi_size: [5,5,2]
+
+# Anomaly detection parameters
+max_age: 30

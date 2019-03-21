@@ -1,6 +1,6 @@
 # Spatio-Temporal Anomaly Detection in First-Person Videos
 
-Created by Yu Yao and Mingze Xu for ICCV 2019
+Created by Yu Yao and Mingze Xu for IROS 2019
 
 ## Run detection
 Go to Mask-RCNN root directory run:
