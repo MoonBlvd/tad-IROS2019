@@ -5,7 +5,7 @@ checkpoint_dir: "/home/brianyao/Documents/stad2019iros-pytorch/checkpoints/fol_e
 
 best_ego_pred_model: "/home/brianyao/Documents/stad2019iros-pytorch/checkpoints/ego_pred_checkpoints/epoch_080_loss_0.001.pt"
 test_dataset: "taiwan_sa" #"A3D" #"taiwan_sa"
-test_root: '#"../data/taiwan_sa/testing" #"/media/DATA/A3D" #"/media/DATA/VAD_datasets/taiwan_sa/testing" AnAnAccident_Detection_Dataset
+test_root: #"../data/taiwan_sa/testing" #"/media/DATA/A3D" #"/media/DATA/VAD_datasets/taiwan_sa/testing" AnAnAccident_Detection_Dataset
 label_file: '../data/A3D/A3D_labels.pkl'
 
 # dataset arguments
