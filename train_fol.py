@@ -47,8 +47,8 @@ dataloader_params ={
 # print("Number of training samples:", train_set.__len__())
 
 val_set = HEVIDataset(args, 'val')
-val_gen = data.DataLoader(val_set, **dataloader_params)
 print("Number of validation samples:", val_set.__len__())
+val_gen = data.DataLoader(val_set, **dataloader_params)
 
 # print model summary
 if args.with_ego:
@@ -120,7 +120,7 @@ for epoch in range(1, args.nb_fol_epoch+1):
         print("Saving checkpoints: " + saved_fol_model_name + ' and ' + saved_ego_pred_model_name)
         if not os.path.isdir(args.checkpoint_dir):
             os.mkdir(args.checkpoint_dir)
-            
+
         torch.save(fol_model.state_dict(), os.path.join(args.checkpoint_dir, saved_fol_model_name))
         torch.save(ego_pred_model.state_dict(), os.path.join(args.checkpoint_dir, saved_ego_pred_model_name))
 

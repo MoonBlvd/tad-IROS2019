@@ -32,8 +32,6 @@ def train_fol(epoch, model, optimizer, train_gen, verbose=True):
             optimizer.step()
 
             #write summery for tensorboardX
-            # writer.add_scalar('data/train_loss', object_pred_loss, n_iters)
-            # n_iters += 1
             if verbose and batch_idx % 100 == 0:
                 print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                     epoch, batch_idx * len(data), len(train_gen.dataset),
@@ -228,8 +226,6 @@ def val_fol_ego(epoch, args, fol_model, ego_pred_model, val_gen, verbose=True):
             fol_loss += rmse_loss_fol(fol_predictions, target_bbox).item()
             ego_pred_loss += rmse_loss_fol(ego_predictions, target_ego_motion).item()
 
-    # total_val_loss = fol_loss + ego_pred_loss
-    # avg_val_loss = total_val_loss/len(val_gen.dataset)
     fol_loss /= len(val_gen.dataset)
     ego_pred_loss /= len(val_gen.dataset)
     avg_val_loss = fol_loss + ego_pred_loss

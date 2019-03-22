@@ -1,6 +1,30 @@
-# Spatio-Temporal Anomaly Detection in First-Person Videos
+# Unsupervised Traffic Accident Detection in First-Person Videos
 
-Created by Yu Yao and Mingze Xu for IROS 2019
+*Yu Yao, Mingze Xu, Yuchen Wang, David Crandall and Ella Atkins*
+
+This repo contains the code for our [paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
+
+:boom: The full code will be released upon the acceptance of our paper.
+
+:boom: So far we have released the pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
+
+## Future Object Localization
+To train the model, run:
+
+	python train_fol.py --load_config YOUR_CONFIG_FILE
+
+To test the model, run:
+
+	python test_fol.py --load_config YOUR_CONFIG_FILE
+ 
+ An example of the config file can be found in ```config/fol_ego_train.yaml```
+
+#### evaluation result
+Note that we have only evaluated the model performance with prediction horizon 0.5 seconds. We are working on proving the 1 second and 2 seconds results.
+
+|     Model      | pred horizon | FDE  | ADE | FIOU |
+|:--------------:|--------------|------|-----|------|
+| FOL + Ego pred | 0.5 sec      | 10.9 | 6.6 | 0.95 |
 
 ## Run detection
 Go to Mask-RCNN root directory run:

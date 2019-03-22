@@ -1,6 +1,9 @@
 import yaml
 import argparse
 
+# class Config()
+
+
 def visualize_config(args):
     """
     Visualize the configuration on the terminal to check the state

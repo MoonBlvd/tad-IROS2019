@@ -11,6 +11,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 class HEVIDataset(data.Dataset):
     def __init__(self, args, phase):
         '''
+        HEV-I dataset object. Contains bbox, flow and ego motion.
+        
         Params:
             args: arguments passed from main file
             phase: 'train' or 'val'

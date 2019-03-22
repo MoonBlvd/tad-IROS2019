@@ -6,6 +6,19 @@ import glob
 import copy
 import pickle as pkl
 
+def cxcywh_to_x1y1x2y2(boxes):
+    '''
+    Params:
+        boxes:(Cx, Cy, w, h)
+    Returns:
+        (x1, y1, x2, y2 or tlbr
+    '''
+    new_boxes = np.zeros_like(boxes)
+    new_boxes[...,0] = boxes[...,0] - boxes[...,2]/2
+    new_boxes[...,1] = boxes[...,1] - boxes[...,3]/2
+    new_boxes[...,2] = boxes[...,0] + boxes[...,2]/2
+    new_boxes[...,3] = boxes[...,1] + boxes[...,3]/2
+    return new_boxes
 
 def bbox_normalize(bbox,W=1280,H=640):
     '''
@@ -32,10 +45,10 @@ def bbox_denormalize(bbox,W=1280,H=640):
         bbox: [cx, cy, w, h] with size (times, 4), value from 0 to W or H
     '''
     new_bbox = copy.deepcopy(bbox)
-    new_bbox[:,0] *= W
-    new_bbox[:,1] *= H
-    new_bbox[:,2] *= W
-    new_bbox[:,3] *= H
+    new_bbox[..., 0] *= W
+    new_bbox[..., 1] *= H
+    new_bbox[..., 2] *= W
+    new_bbox[..., 3] *= H
     
     return new_bbox
 
