@@ -8,7 +8,12 @@ This repo contains the code for our [paper](https://arxiv.org/pdf/1903.00618.pdf
 
 :boom: So far we have released the pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
 
+![introduction](figures/teaser.png?raw=true)
+
 ## Future Object Localization
+
+![introduction](figures/fol.png?raw=true)
+
 To train the model, run:
 
 	python train_fol.py --load_config YOUR_CONFIG_FILE
@@ -26,7 +31,25 @@ Note that we have only evaluated the model performance with prediction horizon 0
 |:--------------:|--------------|------|-----|------|
 | FOL + Ego pred | 0.5 sec      | 10.9 | 6.6 | 0.95 |
 
-## Run detection
+## Citation
+If you found the repo is useful, please feel free to cite our papers:
+
+	@article{yao2018egocentric,
+	title={Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems},
+	author={Yao, Yu and Xu, Mingze and Choi, Chiho and Crandall, David J and Atkins, Ella M and Dariush, Behzad},
+	journal={arXiv preprint arXiv:1809.07408},
+	year={2018}
+	}
+
+
+
+	@article{yao2019unsupervised,
+	title={Unsupervised Traffic Accident Detection in First-Person Videos},
+	author={Yao, Yu and Xu, Mingze and Wang, Yuchen and Crandall, David J and Atkins, Ella M},
+	journal={arXiv preprint arXiv:1903.00618},
+	year={2019}
+	}
+<!-- ## Run detection
 Go to Mask-RCNN root directory run:
 
 	python run_inference.py \
@@ -73,10 +96,10 @@ Then run
 
 	python run_all_videos.py --help
 
-to generate odometry outputs.
+to generate odometry outputs. -->
 
 
-## Train ego motion prediction
+<!-- ## Train ego motion prediction
 
 1. Run scripts/odo_to_ego_motion.py to convert the ```.txt``` odometry files to ```.npy``` files containing yaw, x, z. Note that training and validation data are separately created
 2. Run ```python train_ego_pred.py``` to train a RNN-ED ego motion prediction model.
@@ -85,4 +108,4 @@ to generate odometry outputs.
 
 1. Make sure ego motion model has been pretrained
 2. In config/fvl_config.yaml indicate the best checkpoint of the ego motion prediction model
-3. run  ```python train.py``` to train the FVL-ego model
+3. run  ```python train.py``` to train the FVL-ego model -->
