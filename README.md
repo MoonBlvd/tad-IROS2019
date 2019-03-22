@@ -8,11 +8,11 @@ This repo contains the code for our [paper](https://arxiv.org/pdf/1903.00618.pdf
 
 :boom: So far we have released the pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
 
-![introduction](figures/teaser.png?raw=true|width=100)
+![introduction](figures/teaser.png?raw=true|width=50)
 
 ## Future Object Localization
 
-![introduction](figures/fol.png?raw=true | width=100)
+![introduction](figures/fol.png?raw=true|width=50)
 
 To train the model, run:
 
