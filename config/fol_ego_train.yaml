@@ -22,7 +22,7 @@ lambda_ego: 1
 device: 'cuda'
 
 # fol model parameters
-pred_timesteps: 5
+pred_timesteps: 15
 input_embed_size: 512
 flow_enc_size: 512
 box_enc_size: 512

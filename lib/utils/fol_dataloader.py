@@ -35,7 +35,7 @@ class HEVIDataset(data.Dataset):
             for start in range(seed, len(flow), int(self.args.segment_len/2)):
 
                 end = start + self.args.segment_len
-                if end <= len(flow):
+                if end + self.args.pred_timesteps <= len(bbox):
                     input_bbox = bbox[start:end,:]
                     input_flow = flow[start:end,:,:,:]
                     input_ego_motion = self.get_input(ego_motion, start, end)
@@ -54,7 +54,10 @@ class HEVIDataset(data.Dataset):
             
             # go backward along the session to get data samples again
             seed = np.random.randint(self.args.seed_max)
-            for end in range(len(flow), seed, -self.args.segment_len):
+            for end in range(len(bbox)-self.args.pred_timesteps, seed, -self.args.segment_len):
+                # print("len(flow):", len(flow))
+                # print("len(bbox):", len(bbox))
+                # print("self.args.segment_len:", self.args.segment_len)
                 start = end - self.args.segment_len
                 if start >= 0:
                     input_bbox = bbox[start:end,:]
@@ -93,15 +96,17 @@ class HEVIDataset(data.Dataset):
         ''' 
         target = torch.zeros(self.args.segment_len, self.args.pred_timesteps, session.shape[-1])
         for i, target_start in enumerate(range(start, end)):
-            '''the target of time t is the chaneg of bbox/ego motion at times [t+1,...,t+5}'''
+            '''the target of time t is the change of bbox/ego motion at times [t+1,...,t+5}'''
             target_start = target_start + 1
             try:
                 target[i,:,:] = torch.as_tensor(session[target_start:target_start+self.args.pred_timesteps,:] - 
                                             session[target_start-1:target_start,:])
             except:
-                print(target_start)
+                print("segment start: ", start)
+                print("sample start: ", target_start)
+                print("segment end: ", end)
                 print(session.shape)
-                raise NameError()
+                raise ValueError()
         return target
 
     def __len__(self):

@@ -29,10 +29,14 @@ To test the model, run:
 #### evaluation result
 Note that we have only evaluated the model performance with prediction horizon 0.5 seconds. We are working on proving the 1 second and 2 seconds results.
 
-|     Model      | pred horizon | FDE  | ADE | FIOU |
-|:--------------:|--------------|------|-----|------|
-| FOL + Ego pred | 0.5 sec      | 10.9 | 6.6 | 0.95 |
-
+|     Model      | train seg length | pred horizon | FDE  | ADE  | FIOU |
+|:--------------:|------------------|--------------|------|------|------|
+| FOL + Ego pred | 1.6 sec          | 0.5 sec      | 10.9 | 6.6  | 0.95 |
+| FOL + Ego pred | 1.6 sec          | 1.0 sec      | 24.7 | 12.6 | 0.90 |
+| FOL + Ego pred | 1.6 sec          | 1.5 sec      |      |      |      |
+| FOL + Ego pred | 3.2 sec          | 2.0 sec      |      |      |      |
+| FOL + Ego pred | 3.2 sec          | 2.5 sec      |      |      |      |
+<!-- FDE: 58.468672;    ADE: 21.324994;   FIOU: 0.807104 -->
 ## Citation
 If you found the repo is useful, please feel free to cite our papers:
 

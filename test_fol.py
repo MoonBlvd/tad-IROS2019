@@ -71,7 +71,8 @@ def test_fol_ego(fol_model, ego_pred_model, test_gen):
 
             # print(fol_predictions_xyxy[15,...])
             # print(target_bbox_xyxy[15,...])
-
+            # print("target size: ", target_bbox_xyxy.shape)
+            # print("prediction size: ", fol_predictions_xyxy.shape)
             ADE += np.mean(np.sqrt(np.sum((target_bbox_xyxy[:,:,:2] - fol_predictions_xyxy[:,:,:2]) ** 2, axis=-1)))
             FDE += np.mean(np.sqrt(np.sum((target_bbox_xyxy[:,-1,:2] - fol_predictions_xyxy[:,-1,:2]) ** 2, axis=-1)))
             tmp_FIOU = []
