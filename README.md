@@ -38,16 +38,18 @@ To test the model, run:
  
  An example of the config file can be found in ```config/fol_ego_train.yaml```
 
-#### evaluation result
-Note that we have only evaluated the model performance with prediction horizon 0.5 seconds. We are working on proving the 1 second and 2 seconds results.
+### Evaluation results on HEV-I dataset
+We do not slipt the dataset into easy and challenge cases as we did in the original repo. Instead we evalute all cases together. We are still updating the following results table by changing the prediction horizon and the ablation models.
 
 |     Model      | train seg length | pred horizon | FDE  | ADE  | FIOU |
-|:--------------:|------------------|--------------|------|------|------|
+| :------------: | ---------------- | ------------ | ---- | ---- | ---- |
 | FOL + Ego pred | 1.6 sec          | 0.5 sec      | 10.9 | 6.6  | 0.95 |
 | FOL + Ego pred | 1.6 sec          | 1.0 sec      | 24.7 | 12.6 | 0.90 |
 | FOL + Ego pred | 1.6 sec          | 1.5 sec      | 44.1 | 20.4 | 0.84 |
-| FOL + Ego pred | 3.2 sec          | 2.0 sec      |      |      |      |
-| FOL + Ego pred | 3.2 sec          | 2.5 sec      |      |      |      |
+| FOL + Ego pred | 3.2 sec          | 2.0 sec      | N/A  | N/A  | N/A  |
+| FOL + Ego pred | 3.2 sec          | 2.5 sec      | N/A  | N/A  | N/A  |
+
+**Note**: Due to the change of model structure, the above evaluation results can be different from the original paper. The users are encouraged to compare with the result listed in this repo since the new model structure is more efficient than the model proposed in the original paper.
 
 ## Citation
 If you found the repo is useful, please feel free to cite our papers:
