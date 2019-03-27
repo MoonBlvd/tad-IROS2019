@@ -3,8 +3,8 @@ data_root: "/media/DATA/HEVI_dataset/fol_data"
 ego_data_root: "/media/DATA/HEVI_dataset/ego_motion"
 checkpoint_dir: "checkpoints/fol_ego_checkpoints"
 
-best_fol_model: 'checkpoints/fol_ego_checkpoints/fol_ego_1.0sec/fol_epoch_092_loss_0.0049.pt'
-best_ego_pred_model: 'checkpoints/fol_ego_checkpoints/fol_ego_1.0sec/ego_pred_epoch_092_loss_0.0078.pt'
+best_fol_model: 'checkpoints/fol_ego_checkpoints/fol_ego_1.5sec/fol_epoch_096_loss_0.0110.pt'
+best_ego_pred_model: 'checkpoints/fol_ego_checkpoints/fol_ego_1.5sec/ego_pred_epoch_096_loss_0.0182.pt'
 
 test_dataset: "taiwan_sa" #"A3D" #"taiwan_sa"
 test_root: #"../data/taiwan_sa/testing" #"/media/DATA/A3D" #"/media/DATA/VAD_datasets/taiwan_sa/testing" AnAnAccident_Detection_Dataset

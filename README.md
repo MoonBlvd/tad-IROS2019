@@ -8,12 +8,24 @@ This repo contains the code for our [paper](https://arxiv.org/pdf/1903.00618.pdf
 
 :boom: So far we have released the pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
 
-<!-- ![introduction](figures/teaser.png?raw=false|width=50) -->
 <img src="figures/teaser.png" width="400">
+
+### Requirements
+To run the code on feature-ready HEV-I dataset or dataset prepared in HEV-I style:
+
+	cuda9.0 or newer
+	pytorch 1.0
+	torchsummaryX
+	tensorboardX
+
+To prepare the features used in this work, we used:
+* Detection: [MaskRCNN](https://github.com/matterport/Mask_RCNN)
+* Tracking: [DeepSort](https://github.com/nwojke/deep_sort)
+* Dense optical flow: [FlowNet2.0](https://github.com/NVIDIA/flownet2-pytorch)
+* Ego motion: [ORBSLAM2](https://github.com/raulmur/ORB_SLAM2)
 
 ## Future Object Localization
 
-<!-- ![introduction](figures/fol.png?raw=false|width=50) -->
 <img src="figures/fol.png" width="400">
 
 To train the model, run:
@@ -33,10 +45,10 @@ Note that we have only evaluated the model performance with prediction horizon 0
 |:--------------:|------------------|--------------|------|------|------|
 | FOL + Ego pred | 1.6 sec          | 0.5 sec      | 10.9 | 6.6  | 0.95 |
 | FOL + Ego pred | 1.6 sec          | 1.0 sec      | 24.7 | 12.6 | 0.90 |
-| FOL + Ego pred | 1.6 sec          | 1.5 sec      |      |      |      |
+| FOL + Ego pred | 1.6 sec          | 1.5 sec      | 44.1 | 20.4 | 0.84 |
 | FOL + Ego pred | 3.2 sec          | 2.0 sec      |      |      |      |
 | FOL + Ego pred | 3.2 sec          | 2.5 sec      |      |      |      |
-<!-- FDE: 58.468672;    ADE: 21.324994;   FIOU: 0.807104 -->
+
 ## Citation
 If you found the repo is useful, please feel free to cite our papers:
 
@@ -107,11 +119,11 @@ to generate odometry outputs. -->
 
 <!-- ## Train ego motion prediction
 
-1. Run scripts/odo_to_ego_motion.py to convert the ```.txt``` odometry files to ```.npy``` files containing yaw, x, z. Note that training and validation data are separately created
-2. Run ```python train_ego_pred.py``` to train a RNN-ED ego motion prediction model.
-
-## Train FVL + ego motion preditcion
-
-1. Make sure ego motion model has been pretrained
+1. Run scripts/odo_to_ego_motion.py to convert the ```.txt``` odometry files to ```.npy``` files containing yaw, xhttps://github.com/NVIDIA/flownet2-pytorch, z. Note that trainingtensorboardXand validation data are separately createdhttps://github.com/NVIDIA/flownet2-pytorch
+2. Run ```python train_https://github.com/NVIDIA/flownet2-pytorchego_pred.py``` to traintensorboardXa RNN-ED ego motion prediction model.
+https://github.com/NVIDIA/flownet2-pytorch
+## Train FVL + ego motihttps://github.com/NVIDIA/flownet2-pytorchon preditcion
+https://github.com/NVIDIA/flownet2-pytorch
+1. Make sure ego motionhttps://github.com/NVIDIA/flownet2-pytorch model has been pretrained
 2. In config/fvl_config.yaml indicate the best checkpoint of the ego motion prediction model
 3. run  ```python train.py``` to train the FVL-ego model -->
