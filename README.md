@@ -19,7 +19,7 @@ To run the code on feature-ready HEV-I dataset or dataset prepared in HEV-I styl
 	tensorboardX
 ## Dataset and features
 ### HEV-I dataset
-Note that Honda Research Institute is still working on preparing the videos in HEV-I dataset. The planned release date will be around May 20 2019 durin the ICRA.
+**Note:**  Honda Research Institute is still working on preparing the videos in HEV-I dataset. The planned release date will be around May 20 2019 during the ICRA.
 
 However, we provide the newly generated features here in case you are interested in just using the input features to test your models:
 
