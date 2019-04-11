@@ -41,6 +41,7 @@ To prepare the features used in this work, we used:
 * Ego motion: [ORBSLAM2](https://github.com/raulmur/ORB_SLAM2)
 
 ### A3D dataset
+The A3D dataset will be released upon the acceptance of our IROS submission.
 
 ## Future Object Localization
 
