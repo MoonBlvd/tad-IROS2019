@@ -10,19 +10,37 @@ This repo contains the code for our [paper](https://arxiv.org/pdf/1903.00618.pdf
 
 <img src="figures/teaser.png" width="400">
 
-### Requirements
+## Requirements
 To run the code on feature-ready HEV-I dataset or dataset prepared in HEV-I style:
 
 	cuda9.0 or newer
 	pytorch 1.0
 	torchsummaryX
 	tensorboardX
+## Dataset and features
+### HEV-I dataset
+Note that Honda Research Institute is still working on preparing the videos in HEV-I dataset. The planned release date will be around May 20 2019 durin the ICRA.
+
+However, we provide the newly generated features here in case you are interested in just using the input features to test your models:
+
+[Training features](https://drive.google.com/open?id=1TE-smXm4dD2QgoCQHYmzLHqSsltoIxbe)
+
+[Validation features](https://drive.google.com/open?id=1Vcu6NU7PwDOPTv6RU_7AuBfj6I0rj4dR)
+
+Each feature file is name as "*VideoName*_*ObjectID*.pkl". Each .pkl file includes 4 attributes:.
+* frame_id: the temporal location of the object in the video;
+* bbox: the bounding box of the object from it appears to it disappears;
+* flow: the corresponding optical flow features of the object obtained from the ROIPool;
+* ego_motion: the corresponding [yaw, x, z] value of ego car odometry obtained from the orbslam2.
+
 
 To prepare the features used in this work, we used:
 * Detection: [MaskRCNN](https://github.com/matterport/Mask_RCNN)
 * Tracking: [DeepSort](https://github.com/nwojke/deep_sort)
 * Dense optical flow: [FlowNet2.0](https://github.com/NVIDIA/flownet2-pytorch)
 * Ego motion: [ORBSLAM2](https://github.com/raulmur/ORB_SLAM2)
+
+### A3D dataset
 
 ## Future Object Localization
 
@@ -43,9 +61,9 @@ We do not slipt the dataset into easy and challenge cases as we did in the origi
 
 |     Model      | train seg length | pred horizon | FDE  | ADE  | FIOU |
 | :------------: | ---------------- | ------------ | ---- | ---- | ---- |
-| FOL + Ego pred | 1.6 sec          | 0.5 sec      | 10.9 | 6.6  | 0.95 |
-| FOL + Ego pred | 1.6 sec          | 1.0 sec      | 24.7 | 12.6 | 0.90 |
-| FOL + Ego pred | 1.6 sec          | 1.5 sec      | 44.1 | 20.4 | 0.84 |
+| FOL + Ego pred | 1.6 sec          | 0.5 sec      | 11.0 | 6.7  | 0.85.4 |
+| FOL + Ego pred | 1.6 sec          | 1.0 sec      | 24.7 | 12.6 | 0.73 |
+| FOL + Ego pred | 1.6 sec          | 1.5 sec      | 44.1 | 20.4 | 0.61 |
 | FOL + Ego pred | 3.2 sec          | 2.0 sec      | N/A  | N/A  | N/A  |
 | FOL + Ego pred | 3.2 sec          | 2.5 sec      | N/A  | N/A  | N/A  |
 

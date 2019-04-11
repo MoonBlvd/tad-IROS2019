@@ -35,7 +35,7 @@ class HEVIDataset(data.Dataset):
             for start in range(seed, len(flow), int(self.args.segment_len/2)):
 
                 end = start + self.args.segment_len
-                if end + self.args.pred_timesteps <= len(bbox):
+                if end + self.args.pred_timesteps <= len(bbox) and end <= len(flow):
                     input_bbox = bbox[start:end,:]
                     input_flow = flow[start:end,:,:,:]
                     input_ego_motion = self.get_input(ego_motion, start, end)
@@ -43,21 +43,21 @@ class HEVIDataset(data.Dataset):
                     target_bbox = self.get_target(bbox, start, end)
                     target_ego_motion = self.get_target(ego_motion, start, end)
                     
-                    # get input and target ego_motion, note that their might be missed frames in the middle
-                    # ego_start = frame_id[start]
-                    # ego_end = frame_id[end]
-                    # ego_frame_id = frame_id[start:end]
-                    
                     # target_ego_motion = self.get_target(ego_motion_session, ego_start, ego_end)
-
+                    # if input_flow.shape[0] != 16:
+                    #     print(flow.shape)
+                    #     print(bbox.shape)
+                    #     print(input_flow.shape)
+                    #     print("start: {} end:{} length:{}".format(start, end, self.args.segment_len))
+                    
                     self.all_inputs.append([input_bbox, input_flow, input_ego_motion, target_bbox, target_ego_motion])
             
             # go backward along the session to get data samples again
             seed = np.random.randint(self.args.seed_max)
-            for end in range(len(bbox)-self.args.pred_timesteps, seed, -self.args.segment_len):
-                # print("len(flow):", len(flow))
-                # print("len(bbox):", len(bbox))
-                # print("self.args.segment_len:", self.args.segment_len)
+            for end in range(min([len(bbox)-self.args.pred_timesteps, len(flow)]), 
+                             seed, 
+                             -self.args.segment_len):
+
                 start = end - self.args.segment_len
                 if start >= 0:
                     input_bbox = bbox[start:end,:]
@@ -65,7 +65,11 @@ class HEVIDataset(data.Dataset):
                     input_ego_motion = self.get_input(ego_motion, start, end)
                     target_bbox = self.get_target(bbox, start, end)
                     target_ego_motion = self.get_target(ego_motion, start, end)
-
+                    # if input_flow.shape[0] != 16:
+                    #     print(flow.shape)
+                    #     print(bbox.shape)
+                    #     print(input_flow.shape)
+                    #     print("start: {} end:{} length:{}".format(start, end, self.args.segment_len))
                     self.all_inputs.append([input_bbox, input_flow, input_ego_motion, target_bbox, target_ego_motion])
 
     def get_input(self, ego_motion_session, start, end):
@@ -73,9 +77,6 @@ class HEVIDataset(data.Dataset):
         The input to a ego motion prediction model at time t is 
             its difference from the previous step: X_t - x_{t-1}
         '''
-        # if end - start != self.args.segment:
-        #     ego_frame_ids = 
-
         if start == 0:
             return np.vstack([ego_motion_session[0:1, :] - ego_motion_session[0:1, :], 
                               ego_motion_session[start+1:end] - ego_motion_session[start:end-1]])

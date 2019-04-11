@@ -77,7 +77,7 @@ def test_fol_ego(fol_model, ego_pred_model, test_gen):
             FDE += np.mean(np.sqrt(np.sum((target_bbox_xyxy[:,-1,:2] - fol_predictions_xyxy[:,-1,:2]) ** 2, axis=-1)))
             tmp_FIOU = []
             for i in range(target_bbox_xyxy.shape[0]):
-                tmp_FIOU.append(compute_IOU(target_bbox_xyxy[i,-1,:], fol_predictions_xyxy[i,-1,:]))
+                tmp_FIOU.append(compute_IOU(target_bbox_xyxy[i,-1,:], fol_predictions_xyxy[i,-1,:], format='x1y1x2y2'))
             FIOU += np.mean(tmp_FIOU)
     print("FDE: %4f;    ADE: %4f;   FIOU: %4f" % (FDE, ADE, FIOU))
     ADE /= len(test_gen.dataset)
