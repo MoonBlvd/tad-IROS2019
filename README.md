@@ -61,7 +61,7 @@ We do not slipt the dataset into easy and challenge cases as we did in the origi
 
 |     Model      | train seg length | pred horizon | FDE  | ADE  | FIOU |
 | :------------: | ---------------- | ------------ | ---- | ---- | ---- |
-| FOL + Ego pred | 1.6 sec          | 0.5 sec      | 11.0 | 6.7  | 0.85.4 |
+| FOL + Ego pred | 1.6 sec          | 0.5 sec      | 11.0 | 6.7  | 0.85 |
 | FOL + Ego pred | 1.6 sec          | 1.0 sec      | 24.7 | 12.6 | 0.73 |
 | FOL + Ego pred | 1.6 sec          | 1.5 sec      | 44.1 | 20.4 | 0.61 |
 | FOL + Ego pred | 3.2 sec          | 2.0 sec      | N/A  | N/A  | N/A  |
