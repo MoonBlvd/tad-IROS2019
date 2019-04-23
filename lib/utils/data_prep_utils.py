@@ -20,6 +20,22 @@ def cxcywh_to_x1y1x2y2(boxes):
     new_boxes[...,3] = boxes[...,1] + boxes[...,3]/2
     return new_boxes
 
+def x1y1wh_to_x1y1x2y2(boxes):
+    '''
+    Params:
+        boxes:(x1, y1, w, h)
+    Returns:
+        (x1, y1, x2, y2) or tlbr, integers
+    Deprecate: this is temporarily used for fixing the bug that the output of mask-rcnn was x1y1wh format.
+                should be removed in the future!
+    '''
+    new_boxes = np.zeros_like(boxes)
+    new_boxes[...,0] = boxes[...,0]
+    new_boxes[...,1] = boxes[...,1]
+    new_boxes[...,2] = boxes[...,0] + boxes[...,2]
+    new_boxes[...,3] = boxes[...,1] + boxes[...,3]
+    return new_boxes
+
 def bbox_normalize(bbox,W=1280,H=640):
     '''
     normalize bbox value to [0,1]
