@@ -70,6 +70,9 @@ We do not slipt the dataset into easy and challenge cases as we did in the origi
 
 **Note**: Due to the change of model structure, the above evaluation results can be different from the original paper. The users are encouraged to compare with the result listed in this repo since the new model structure is more efficient than the model proposed in the original paper.
 
+### Traffic Accident Detection Demo
+![Alt Text](figure/tad2019iros.gif)
+
 ## Citation
 If you found the repo is useful, please feel free to cite our papers:
 
