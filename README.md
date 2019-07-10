@@ -2,9 +2,9 @@
 
 *Yu Yao, Mingze Xu, Yuchen Wang, David Crandall and Ella Atkins*
 
-This repo contains the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
+This repo contains the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618v1.pdf) on unsupervised traffic accident detection.
 
-:boom: The code and A3D dataset is released here! 
+:boom: The **code** and **A3D dataset** is released here! 
 
 This code also contains a improved pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
 
@@ -51,7 +51,7 @@ Note that each downloaded video is a combination of several short clips, to spli
 
 	python datasets/A3D_split.py --root_dir DATA_ROOT --label_dir DIR_TO_PKL_LABEL
 
-The annotations can be downloaded from here. 
+The annotations can be found in ```datasets/A3D_labels.pkl``` 
 
 ### HEV-I dataset
 [Honda Egocentric View-Intersection (HEV-I)](https://usa.honda-ri.com/ca/hevi) dataset is owned by HRI and the users can follow the link to request the dataset.
