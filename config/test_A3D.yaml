@@ -10,14 +10,13 @@ best_fol_model: '/home/brianyao/Documents/tad-IROS2019/checkpoints/fvl_ego_check
 best_ego_pred_model: '/home/brianyao/Documents/tad-IROS2019/checkpoints/fvl_ego_checkpoints/ego_pred_epoch_055_loss_0.0016.pt'
 
 test_dataset: "A3D" 
-test_root: "../data/A3D/frames" 
-label_file: '../data/A3D/A3D_labels.pkl'
+label_file: '/home/brianyao/Documents/tad-IROS2019/datasets/A3D_labels.pkl'
 
 track_dir: "/media/DATA/A3D/deep_sort_clear"
 flow_dir: "/media/DATA/A3D/flownet2"
 ego_motion_dir: "/media/DATA/A3D/ego_motion"
 img_dir: "/media/DATA/A3D/frames"
-save_dir: "/media/DATA/A3D/multi_prediction_results"
+save_dir: "/media/DATA/A3D/fvl_ego_results"
 
 # dataset arguments
 seed_max: 5

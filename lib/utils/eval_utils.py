@@ -94,8 +94,6 @@ class Evaluator():
                 zero_score_videos.append(key)
         return anomaly_scores, labels, zero_score_videos
 
-    
-
 def bbox2pixel_traj(bbox,predict_diff=True,prev_box=None,W=1280,H=640):
         '''
         for plotting purpose

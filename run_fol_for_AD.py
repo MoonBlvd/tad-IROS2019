@@ -214,8 +214,9 @@ def main(args, visualize=False):
             '''update current frame id'''
             current_frame_id += 1 #= int(track_data[i][0])
         
-        # with open(os.path.join(args.save_dir, video_name+'.pkl'),'wb') as f:
-        #     pkl.dump(output_dict_list, f)
+        # save the outputs of FOL+Ego_pred for anomaly detection evaluation
+        with open(os.path.join(args.save_dir, video_name+'.pkl'),'wb') as f:
+            pkl.dump(output_dict_list, f)
 
 if __name__=='__main__':
     args = parse_args()
