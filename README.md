@@ -20,9 +20,10 @@ To run the code on feature-ready HEV-I dataset or dataset prepared in HEV-I styl
 ## Train and test
 Note that we apply a FOL and ego-motion prediction model to do unsupervised anomaly detection. Thus model training is to train the FOL and ego-motion prediction model on normal driving dataset. We haved used HEV-I as the training set.
 ### Train
-The training script and a config file template are provided:
+The training script and a config file template are provided. We trained the ego motion predictor first and then train the FOL and ego motion predictor jointly:
 
-	python train.py --load_config config/fol_ego_train.yaml
+	python train_ego_pred.py --load_config config/fol_ego_train.yaml
+	python train_fol.py --load_config config/fol_ego_train.yaml
 
 ### Run FOL on test set and then Anomaly Detection
 For evaluation purpose, we firstly run our fol_ego model on test dataset, e.g. A3D to generate all predictions
