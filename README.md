@@ -71,7 +71,7 @@ Each feature file is name as "*VideoName*_*ObjectID*.pkl". Each .pkl file includ
 
 
 To prepare the features used in this work, we used:
-* Detection: [MaskRCNN](https://github.com/matterport/Mask_RCNN)
+* Detection: [MaskRCNN](https://github.com/MoonBlvd/Mask_RCNN)
 * Tracking: [DeepSort](https://github.com/nwojke/deep_sort)
 * Dense optical flow: [FlowNet2.0](https://github.com/NVIDIA/flownet2-pytorch)
 * Ego motion: [ORBSLAM2](https://github.com/raulmur/ORB_SLAM2)
