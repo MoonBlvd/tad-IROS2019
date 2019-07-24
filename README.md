@@ -1,6 +1,6 @@
 # Unsupervised Traffic Accident Detection in First-Person Videos
 
-*Yu Yao, Mingze Xu, Yuchen Wang, David Crandall and Ella Atkins*
+_Yu Yao*, Mingze Xu*, Yuchen Wang, David Crandall and Ella Atkins_
 
 This repo contains the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618v1.pdf) on unsupervised traffic accident detection.
 
@@ -110,21 +110,20 @@ We do not slipt the dataset into easy and challenge cases as we did in the origi
 ## Citation
 If you found the repo is useful, please feel free to cite our papers:
 
-	@article{yao2018egocentric,
-	title={Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems},
-	author={Yao, Yu and Xu, Mingze and Choi, Chiho and Crandall, David J and Atkins, Ella M and Dariush, Behzad},
-	journal={arXiv preprint arXiv:1809.07408},
-	year={2018}
+	@inproceedings{yao2018egocentric,
+		title={Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems},
+		author={Yao, Yu and Xu, Mingze and Choi, Chiho and Crandall, David J and Atkins, Ella M and Dariush, Behzad},
+		journal={IEEE International Conference on Robotics and Automation (ICRA)},
+		year={2019}
 	}
 
-
-
-	@article{yao2019unsupervised,
-	title={Unsupervised Traffic Accident Detection in First-Person Videos},
-	author={Yao, Yu and Xu, Mingze and Wang, Yuchen and Crandall, David J and Atkins, Ella M},
-	journal={arXiv preprint arXiv:1903.00618},
-	year={2019}
+	@inproceedings{yao2019unsupervised,
+		title={Unsupervised Traffic Accident Detection in First-Person Videos},
+		author={Yao, Yu and Xu, Mingze and Wang, Yuchen and Crandall, David J and Atkins, Ella M},
+		journal={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+		year={2019}
 	}
+	
 <!-- ## Run detection
 Go to Mask-RCNN root directory run:
 
