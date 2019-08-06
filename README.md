@@ -55,7 +55,7 @@ Note that each downloaded video is a combination of several short clips, to spli
 The annotations can be found in ```datasets/A3D_labels.pkl``` 
 
 ### HEV-I dataset
-[Honda Egocentric View-Intersection (HEV-I)](https://usa.honda-ri.com/ca/hevi) dataset is owned by HRI and the users can follow the link to request the dataset.
+[Honda Egocentric View-Intersection (HEV-I)](https://usa.honda-ri.com/hevi) dataset is owned by HRI and the users can follow the link to request the dataset.
 
 However, we provide the newly generated features here in case you are interested in just using the input features to test your models:
 
