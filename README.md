@@ -2,7 +2,7 @@
 
 _Yu Yao*, Mingze Xu*, Yuchen Wang, David Crandall and Ella Atkins_
 
-This repo contains the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618v1.pdf) on unsupervised traffic accident detection.
+This repo contains the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
 
 :boom: The **code** and **A3D dataset** is released here! 
 
