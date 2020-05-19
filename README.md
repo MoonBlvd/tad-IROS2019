@@ -2,11 +2,9 @@
 
 _Yu Yao*, Mingze Xu*, Yuchen Wang, David Crandall and Ella Atkins_
 
-This repo contains the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
+:boom: **May 19th 2020**: [Our new Detection of Traffic Anomaly (DoTA) dataset is available here](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)! DoTA can be considered an extention of A3D which provides more videos (4677 raw videos!) and annotations (anomaly type, anomaly objects, and track ids). The corresponding paper can be found [here](https://arxiv.org/pdf/2004.03044.pdf). 
 
-:boom: May 19th 2020: [Our new Detection of Traffic Anomaly (DoTA) dataset is available here](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)! DoTA can be considered an extention of A3D which provides more videos (4677 raw videos!) and annotations (anomaly type, anomaly objects, and track ids). The corresponding paper can be found [here](https://arxiv.org/pdf/2004.03044.pdf).
-
-:boom: The **code** and **A3D dataset** is released here! 
+This repo contains A3D dataset and the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
 
 This code also contains a improved pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
 
