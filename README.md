@@ -4,14 +4,14 @@ _Yu Yao*, Mingze Xu*, Yuchen Wang, David Crandall and Ella Atkins_
 
 ## Updates
 
-:boom: **May 19th 2020**: [Our new Detection of Traffic Anomaly (DoTA) dataset is available here](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)! DoTA can be considered an extention of A3D which provides more videos (4677 raw videos!) and annotations (anomaly type, anomaly objects, and track ids). 
+:boom: **May 19th 2020**: [Our new Detection of Traffic Anomaly (DoTA) dataset is available here](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)! DoTA can be considered an extention of A3D, which provides more videos (4677 raw videos!) and annotations (anomaly types, anomaly objects, and track ids). 
 
-DoTA provides more benchmarks for driving video anomaly detection, action recognition and online action detection. The corresponding paper can be found [here](https://arxiv.org/pdf/2004.03044.pdf). 
+DoTA also provides more benchmarks in driving videos, such as anomaly detection, action recognition, and online action detection. The corresponding paper can be found [here](https://arxiv.org/pdf/2004.03044.pdf). 
 
-## Introduction to this repo
-This repo contains A3D dataset and the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
+## Introduction
+This repo contains the A3D dataset and the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
 
-This code also contains a improved pytorch implementation of our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019
+This code also contains an improved PyTorch implementation for our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019.
 
 <img src="figures/teaser.png" width="400">
 
@@ -22,16 +22,17 @@ To run the code on feature-ready HEV-I dataset or dataset prepared in HEV-I styl
 	pytorch 1.0
 	torchsummaryX
 	tensorboardX
+	
 ## Train and test
-Note that we apply a FOL and ego-motion prediction model to do unsupervised anomaly detection. Thus model training is to train the FOL and ego-motion prediction model on normal driving dataset. We haved used HEV-I as the training set.
+Note that we apply a FOL and ego-motion prediction model to do unsupervised anomaly detection. Thus, the model is only trained for FOL and ego-motion prediction on normal driving datasets. In the paper, we used HEV-I as the training data.
 ### Train
-The training script and a config file template are provided. We trained the ego motion predictor first and then train the FOL and ego motion predictor jointly:
+The training script and a config file template are provided. We first train the ego motion predictor and then train the FOL and ego motion predictor jointly:
 
 	python train_ego_pred.py --load_config config/fol_ego_train.yaml
 	python train_fol.py --load_config config/fol_ego_train.yaml
 
 ### Run FOL on test set and then Anomaly Detection
-For evaluation purpose, we firstly run our fol_ego model on test dataset, e.g. A3D to generate all predictions
+For evaluation purpose, we firstly run our fol_ego model on test dataset, e.g. A3D, to generate all predictions
 
 	python run_fol_for_AD.py --load_config config/test_A3D.yaml
 
@@ -39,17 +40,17 @@ This will save one ```.pkl``` file for each video clip. Then we can use the save
 
 	python run_AD.py --load_config config/test_A3D.yaml
 
-The online anomaly detection script is not provided, but the users are free to write another script to do FOL and anomaly detection online. 
+The only anomaly detection script is not provided, but the users are free to write another script to do FOL and anomaly detection online.
 
 ## Dataset and features
-## A3D dataset
-The A3D dataset contains videos from YouTube and a ```.pkl``` file including human annotated video start/end time and anomaly start/end time. We provide scripts and url files to download the videos and run pre-process to get the same images we haved used in the paper.
+### A3D dataset
+The A3D dataset contains videos from YouTube and a ```.pkl``` file including human annotated video start/end times and anomaly start/end times. We provide scripts and url files to download the videos and run pre-process to get the same images we used in the paper.
 
 Download the videos from YouTube:
 
 	python datasets/A3D_download.py --download_dir VIDEO_DIR --url_file datasets/A3D_urls.txt
 
-Then convert the videos to images in 10Hz
+Then convert the videos to images in 10Hz:
 
 	python scripts/video2frames.py -v VIDEO_DIR -f 10 -o IMAGE_DIR -e jpg
 
@@ -74,13 +75,11 @@ Each feature file is name as "*VideoName*_*ObjectID*.pkl". Each .pkl file includ
 * flow: the corresponding optical flow features of the object obtained from the ROIPool;
 * ego_motion: the corresponding [yaw, x, z] value of ego car odometry obtained from the orbslam2.
 
-
 To prepare the features used in this work, we used:
 * Detection: [MaskRCNN](https://github.com/MoonBlvd/Mask_RCNN)
 * Tracking: [DeepSort](https://github.com/nwojke/deep_sort)
 * Dense optical flow: [FlowNet2.0](https://github.com/NVIDIA/flownet2-pytorch)
 * Ego motion: [ORBSLAM2](https://github.com/raulmur/ORB_SLAM2)
-
 
 ## Future Object Localization
 
@@ -109,7 +108,7 @@ We do not slipt the dataset into easy and challenge cases as we did in the origi
 
 **Note**: Due to the change of model structure, the above evaluation results can be different from the original paper. The users are encouraged to compare with the result listed in this repo since the new model structure is more efficient than the model proposed in the original paper.
 
-### Traffic Accident Detection Demo
+## Traffic Accident Detection Demo
 ![Alt Text](figures/tad2019iros.gif)
 
 ## Citation
