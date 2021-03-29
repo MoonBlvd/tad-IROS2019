@@ -4,53 +4,55 @@ _Yu Yao*, Mingze Xu*, Yuchen Wang, David Crandall and Ella Atkins_
 
 ## Updates
 
-:boom: **May 19th 2020**: [Our new Detection of Traffic Anomaly (DoTA) dataset is available here](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)! DoTA can be considered an extention of A3D, which provides more videos (4677 raw videos!) and annotations (anomaly types, anomaly objects, and track ids). 
+:boom: **May 19th 2020**: [Our new Detection of Traffic Anomaly (DoTA) dataset is available here](https://github.com/MoonBlvd/Detection-of-Traffic-Anomaly)! DoTA can be considered an extention of A3D, which provides more videos (4677 raw videos) and annotations (anomaly types, anomaly objects, and tracking ids). 
 
 DoTA also provides more benchmarks in driving videos, such as anomaly detection, action recognition, and online action detection. The corresponding paper can be found [here](https://arxiv.org/pdf/2004.03044.pdf). 
 
 ## Introduction
 This repo contains the A3D dataset and the code for our [IROS2019 paper](https://arxiv.org/pdf/1903.00618.pdf) on unsupervised traffic accident detection.
 
-This code also contains an improved PyTorch implementation for our ICRA paper [*Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems*](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019.
+This code also contains an improved PyTorch implementation for our ICRA paper [Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems](https://arxiv.org/pdf/1809.07408.pdf), which is an important building block for the traffic accident detection. The original project repo is https://github.com/MoonBlvd/fvl-ICRA2019.
 
 <img src="figures/teaser.png" width="400">
 
 ## Requirements
 To run the code on feature-ready HEV-I dataset or dataset prepared in HEV-I style:
 
-	cuda9.0 or newer
+	cuda 9.0 or newer
 	pytorch 1.0
 	torchsummaryX
 	tensorboardX
 	
 ## Train and test
-Note that we apply a FOL and ego-motion prediction model to do unsupervised anomaly detection. Thus, the model is only trained for FOL and ego-motion prediction on normal driving datasets. In the paper, we used HEV-I as the training data.
+Note that we apply a FOL and ego-motion prediction model for unsupervised anomaly detection. Thus, the model is only trained for FOL and ego-motion prediction on normal driving datasets. In the paper, we used HEV-I as our training data.
+
 ### Train
 The training script and a config file template are provided. We first train the ego motion predictor and then train the FOL and ego motion predictor jointly:
 
 	python train_ego_pred.py --load_config config/fol_ego_train.yaml
 	python train_fol.py --load_config config/fol_ego_train.yaml
 
-### Run FOL on test set and then Anomaly Detection
-For evaluation purpose, we firstly run our fol_ego model on test dataset, e.g. A3D, to generate all predictions
+### Test FOL and anomaly detection
+For evaluation purpose, we first run our fol_ego model on test dataset, e.g. A3D, to generate all predictions
 
 	python run_fol_for_AD.py --load_config config/test_A3D.yaml
 
-This will save one ```.pkl``` file for each video clip. Then we can use the saved predictions to calculate anomaly detection metrics. The following command will print results similar to the paper.
+This will save one ```.pkl``` file for each video clip. Then, we can use the saved predictions to calculate anomaly detection metrics. The following command will print results similar to the paper.
 
 	python run_AD.py --load_config config/test_A3D.yaml
 
 The only anomaly detection script is not provided, but the users are free to write another script to do FOL and anomaly detection online.
 
 ## Dataset and features
+
 ### A3D dataset
-The A3D dataset contains videos from YouTube and a ```.pkl``` file including human annotated video start/end times and anomaly start/end times. We provide scripts and url files to download the videos and run pre-process to get the same images we used in the paper.
+The A3D dataset contains videos from YouTube and a ```.pkl``` file including human annotated video start/end times and anomaly start/end times. We provide scripts and url files to download the videos. Running the pre-process script will get the same frames we used in the paper.
 
 Download the videos from YouTube:
 
 	python datasets/A3D_download.py --download_dir VIDEO_DIR --url_file datasets/A3D_urls.txt
 
-Then convert the videos to images in 10Hz:
+Then convert the videos to frames in 10Hz:
 
 	python scripts/video2frames.py -v VIDEO_DIR -f 10 -o IMAGE_DIR -e jpg
 
@@ -63,19 +65,19 @@ The annotations can be found in ```datasets/A3D_labels.pkl```
 ### HEV-I dataset
 [Honda Egocentric View-Intersection (HEV-I)](https://usa.honda-ri.com/hevi) dataset is owned by HRI and the users can follow the link to request the dataset.
 
-However, we provide the newly generated features here in case you are interested in just using the input features to test your models:
+However, we provide the newly generated features here in case that you are interested in using the input features to test your models:
 
 [Training features](https://drive.google.com/open?id=1TE-smXm4dD2QgoCQHYmzLHqSsltoIxbe)
 
 [Validation features](https://drive.google.com/open?id=1Vcu6NU7PwDOPTv6RU_7AuBfj6I0rj4dR)
 
-[Training_ego motion extracted from ORBSLAM2](https://drive.google.com/file/d/1SG33TNXTSp7CshLl0AL25Xk-L6XJ4tDl/view?usp=sharing)
+[Training ego-motion extracted from ORBSLAM2](https://drive.google.com/file/d/1SG33TNXTSp7CshLl0AL25Xk-L6XJ4tDl/view?usp=sharing)
 
-[Validation ego motion extracted from ORBSLAM2](https://drive.google.com/file/d/1dZUrFP9q2pB3BFVJiWiNUXDSfRNLQHpr/view?usp=sharing)
+[Validation ego-motion extracted from ORBSLAM2](https://drive.google.com/file/d/1dZUrFP9q2pB3BFVJiWiNUXDSfRNLQHpr/view?usp=sharing)
 
 Each feature file is name as "*VideoName*_*ObjectID*.pkl". Each .pkl file includes 4 attributes:.
 * frame_id: the temporal location of the object in the video;
-* bbox: the bounding box of the object from it appears to it disappears;
+* bbox: the bounding box of the object from its appearing to disappearing;
 * flow: the corresponding optical flow features of the object obtained from the ROIPool;
 * ego_motion: the corresponding [yaw, x, z] value of ego car odometry obtained from the orbslam2.
 
@@ -100,7 +102,7 @@ To test the model, run:
  An example of the config file can be found in ```config/fol_ego_train.yaml```
 
 ### Evaluation results on HEV-I dataset
-We do not slipt the dataset into easy and challenge cases as we did in the original repo. Instead we evalute all cases together. We are still updating the following results table by changing the prediction horizon and the ablation models.
+We do not split the dataset into easy and challenge cases as we did in the original repo. Instead, we evalute all cases together. We are still updating the following results table by changing the prediction horizon and the ablation models.
 
 |     Model      | train seg length | pred horizon | FDE  | ADE  | FIOU |
 | :------------: | ---------------- | ------------ | ---- | ---- | ---- |
@@ -116,7 +118,7 @@ We do not slipt the dataset into easy and challenge cases as we did in the origi
 ![Alt Text](figures/tad2019iros.gif)
 
 ## Citation
-If you found the repo is useful, please feel free to cite our papers:
+If you found this repo is useful, please feel free to cite our papers:
 
 	@inproceedings{yao2018egocentric,
 		title={Egocentric Vision-based Future Vehicle Localization for Intelligent Driving Assistance Systems},
