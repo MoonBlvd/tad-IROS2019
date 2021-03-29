@@ -69,6 +69,10 @@ However, we provide the newly generated features here in case you are interested
 
 [Validation features](https://drive.google.com/open?id=1Vcu6NU7PwDOPTv6RU_7AuBfj6I0rj4dR)
 
+[Training_ego motion extracted from ORBSLAM2](https://drive.google.com/file/d/1SG33TNXTSp7CshLl0AL25Xk-L6XJ4tDl/view?usp=sharing)
+
+[Validation ego motion extracted from ORBSLAM2](https://drive.google.com/file/d/1dZUrFP9q2pB3BFVJiWiNUXDSfRNLQHpr/view?usp=sharing)
+
 Each feature file is name as "*VideoName*_*ObjectID*.pkl". Each .pkl file includes 4 attributes:.
 * frame_id: the temporal location of the object in the video;
 * bbox: the bounding box of the object from it appears to it disappears;
